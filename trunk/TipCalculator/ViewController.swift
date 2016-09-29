@@ -9,7 +9,7 @@
 import UIKit
 import Darwin
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var viewOther: UIView!
@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var lbl3p: UILabel!
     var map_percent = [0.15, 0.25, 0.3]
     var pos_text_y = 0.0
+    
+    var currency = 0
     
     @IBAction func onChangeDidEnd(sender: AnyObject) {
         UIView.animateWithDuration(0.25, delay:0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
@@ -53,10 +55,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        lblAmount.delegate = self
+        
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         var idx = defaults.integerForKey("default_tip")
         segTypeTip.selectedSegmentIndex = idx
         
+        currency = defaults.integerForKey("default_currency")
         pos_text_y = Double(textfieldBill.frame.origin.y)
         
     }
@@ -64,6 +70,7 @@ class ViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         var idx = defaults.integerForKey("default_tip")
         segTypeTip.selectedSegmentIndex = idx
+        currency = defaults.integerForKey("default_currency")
 
     }
 
@@ -72,21 +79,38 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func getCurrency(idx:Int)->String {
+        if (idx == 0){
+            return "vi_VN"
+        }
+        else if(idx == 1) {
+            return "en_US"
+        }
+        return "en_US"
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
+        return string.rangeOfCharacterFromSet(invalidCharacters, options: [], range: string.startIndex ..< string.endIndex) == nil
+    }
+    
     func updateChange() {
         var billMoney = NSString(string: lblAmount.text!).doubleValue
         var type_tip = segTypeTip.selectedSegmentIndex
         var tipMoney = billMoney*map_percent[type_tip]
-        lblTip.text = String(format: "$ %.2f", tipMoney )
+        lblTip.text = String(format: "%@", Float(tipMoney).asLocaleCurrency(getCurrency(currency)) )
         
         var totalMoney = billMoney + tipMoney
         
         
-        lblTotal.text = String(format: "$ %.2f", totalMoney )
+        var test_float = Float(1000)
         
-        lbl2p.text = String(format:"$ %.2f", totalMoney/2)
-        lbl3p.text = String(format:"$ %.2f", totalMoney/3)
-        lbl4p.text = String(format:"$ %.2f", totalMoney/4)
-        lbl5p.text = String(format:"$ %.2f", totalMoney/5)
+        lblTotal.text = String(format: "%@", Float(totalMoney).asLocaleCurrency(getCurrency(currency)) )
+        
+        lbl2p.text = String(format:"%@", Float(totalMoney/2).asLocaleCurrency(getCurrency(currency)))
+        lbl3p.text = String(format:"%@", Float(totalMoney/3).asLocaleCurrency(getCurrency(currency)))
+        lbl4p.text = String(format:"%@", Float(totalMoney/4).asLocaleCurrency(getCurrency(currency)))
+        lbl5p.text = String(format:"%@", Float(totalMoney/5).asLocaleCurrency(getCurrency(currency)))
     }
 
     @IBAction func EditingChanged(sender: UITextField) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048B91051D9D6B0000D4FE1A /* Float+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B91041D9D6B0000D4FE1A /* Float+Currency.swift */; };
 		61055FC21D17C408007B40CC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61055FC11D17C408007B40CC /* SettingViewController.swift */; };
 		6116CADD1D12C118005CF1BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6116CADC1D12C118005CF1BC /* AppDelegate.swift */; };
 		6116CADF1D12C118005CF1BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6116CADE1D12C118005CF1BC /* ViewController.swift */; };
@@ -15,7 +16,7 @@
 		6116CAE71D12C118005CF1BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6116CAE51D12C118005CF1BC /* LaunchScreen.storyboard */; };
 		6116CAF21D12C118005CF1BC /* TipCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6116CAF11D12C118005CF1BC /* TipCalculatorTests.swift */; };
 		6116CAFD1D12C119005CF1BC /* TipCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6116CAFC1D12C119005CF1BC /* TipCalculatorUITests.swift */; };
-		6162E4861D19716A00FF74C6 /* grab-vector-graphic-person-icon--imagebasket-13.png in Resources */ = {isa = PBXBuildFile; fileRef = 6162E4851D19716A00FF74C6 /* grab-vector-graphic-person-icon--imagebasket-13.png */; };
+		6162E4861D19716A00FF74C6 /* Dapino-People-Brown-man.ico in Resources */ = {isa = PBXBuildFile; fileRef = 6162E4851D19716A00FF74C6 /* Dapino-People-Brown-man.ico */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		048B91041D9D6B0000D4FE1A /* Float+Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Currency.swift"; sourceTree = "<group>"; };
 		61055FC11D17C408007B40CC /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = TipCalculator/SettingViewController.swift; sourceTree = "<group>"; };
 		6116CAD91D12C118005CF1BC /* TipCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6116CADC1D12C118005CF1BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		6116CAF81D12C119005CF1BC /* TipCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6116CAFC1D12C119005CF1BC /* TipCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculatorUITests.swift; sourceTree = "<group>"; };
 		6116CAFE1D12C119005CF1BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6162E4851D19716A00FF74C6 /* grab-vector-graphic-person-icon--imagebasket-13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "grab-vector-graphic-person-icon--imagebasket-13.png"; path = "../../../Desktop/grab-vector-graphic-person-icon--imagebasket-13.png"; sourceTree = "<group>"; };
+		6162E4851D19716A00FF74C6 /* Dapino-People-Brown-man.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = "Dapino-People-Brown-man.ico"; path = "../../../../Downloads/Dapino-People-Brown-man.ico"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +104,10 @@
 		6116CADB1D12C118005CF1BC /* TipCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				6162E4851D19716A00FF74C6 /* grab-vector-graphic-person-icon--imagebasket-13.png */,
+				6162E4851D19716A00FF74C6 /* Dapino-People-Brown-man.ico */,
 				6116CADC1D12C118005CF1BC /* AppDelegate.swift */,
 				6116CADE1D12C118005CF1BC /* ViewController.swift */,
+				048B91041D9D6B0000D4FE1A /* Float+Currency.swift */,
 				6116CAE01D12C118005CF1BC /* Main.storyboard */,
 				6116CAE31D12C118005CF1BC /* Assets.xcassets */,
 				6116CAE51D12C118005CF1BC /* LaunchScreen.storyboard */,
@@ -238,7 +241,7 @@
 				6116CAE71D12C118005CF1BC /* LaunchScreen.storyboard in Resources */,
 				6116CAE41D12C118005CF1BC /* Assets.xcassets in Resources */,
 				6116CAE21D12C118005CF1BC /* Main.storyboard in Resources */,
-				6162E4861D19716A00FF74C6 /* grab-vector-graphic-person-icon--imagebasket-13.png in Resources */,
+				6162E4861D19716A00FF74C6 /* Dapino-People-Brown-man.ico in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +269,7 @@
 				6116CADF1D12C118005CF1BC /* ViewController.swift in Sources */,
 				6116CADD1D12C118005CF1BC /* AppDelegate.swift in Sources */,
 				61055FC21D17C408007B40CC /* SettingViewController.swift in Sources */,
+				048B91051D9D6B0000D4FE1A /* Float+Currency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
