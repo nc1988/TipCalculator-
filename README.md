@@ -18,13 +18,15 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 * [x] UI animations
 * [ ] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
+* [x] Using locale-specific currency and currency thousands separators.
 * [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
 * Calculating the money for each people of the group
 * In my app, the keyboard is not the first responder, but i only show the other ui if the textfield is on focus. so that make user dont try to tap somewhere to use this app
+* Fixing some feedbacks
+
 
 ## Video Walkthrough 
 

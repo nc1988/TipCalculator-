@@ -59,7 +59,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        var idx = defaults.integerForKey("default_tip")
+        let idx = defaults.integerForKey("default_tip")
         segTypeTip.selectedSegmentIndex = idx
         
         currency = defaults.integerForKey("default_currency")
@@ -68,7 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewWillAppear(animated: Bool) {
         let defaults = NSUserDefaults.standardUserDefaults()
-        var idx = defaults.integerForKey("default_tip")
+        let idx = defaults.integerForKey("default_tip")
         segTypeTip.selectedSegmentIndex = idx
         currency = defaults.integerForKey("default_currency")
 
@@ -95,15 +95,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func updateChange() {
-        var billMoney = NSString(string: lblAmount.text!).doubleValue
-        var type_tip = segTypeTip.selectedSegmentIndex
-        var tipMoney = billMoney*map_percent[type_tip]
+        let billMoney = NSString(string: lblAmount.text!).doubleValue
+        let type_tip = segTypeTip.selectedSegmentIndex
+        let tipMoney = billMoney*map_percent[type_tip]
         lblTip.text = String(format: "%@", Float(tipMoney).asLocaleCurrency(getCurrency(currency)) )
         
-        var totalMoney = billMoney + tipMoney
+        let totalMoney = billMoney + tipMoney
         
         
-        var test_float = Float(1000)
         
         lblTotal.text = String(format: "%@", Float(totalMoney).asLocaleCurrency(getCurrency(currency)) )
         
