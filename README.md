@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough 
 
-http://i.makeagif.com/media/6-23-2016/biKPAj.gif
+https://giphy.com/gifs/r0BKwJBztldpS
 
 ## Notes
 
