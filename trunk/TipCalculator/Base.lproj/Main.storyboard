@@ -17,7 +17,7 @@
                                 <rect key="frame" x="20" y="114" width="280" height="484"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="WLE-1p-dSN">
+                                    <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="WLE-1p-dSN">
                                         <rect key="frame" x="0.0" y="166" width="280" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
@@ -115,6 +115,10 @@
                                         <rect key="frame" x="33" y="402" width="24" height="13"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="i4U-Vi-XcJ">
+                                        <rect key="frame" x="46" y="402" width="24" height="13"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="zPd-7x-AT2">
                                         <rect key="frame" x="20" y="351" width="24" height="13"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -123,10 +127,22 @@
                                         <rect key="frame" x="33" y="351" width="24" height="13"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.png" id="i4U-Vi-XcJ">
-                                        <rect key="frame" x="46" y="402" width="24" height="13"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="100" id="Yc7-Kz-gUb">
+                                        <rect key="frame" x="-2" y="202" width="284" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
+                                        <connections>
+                                            <action selector="tipSliderEditChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="26c-7X-Nmh"/>
+                                            <action selector="tipSliderEditChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="wge-2W-qJA"/>
+                                            <action selector="tipSliderEndEdit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="hey-or-XIh"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rIL-fH-dZU">
+                                        <rect key="frame" x="98" y="166" width="94" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <color key="textColor" red="0.039215686274509803" green="0.37647058823529411" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </view>
                             <textField clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="bezel" textAlignment="right" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" id="AFk-cv-xoZ">
@@ -161,11 +177,13 @@
                         <outlet property="lbl4p" destination="XyQ-Vm-VIy" id="soQ-10-kLn"/>
                         <outlet property="lbl5p" destination="iSi-zU-htr" id="DMC-mC-GCG"/>
                         <outlet property="lblAmount" destination="AFk-cv-xoZ" id="JLd-ec-jrW"/>
+                        <outlet property="lblPercent" destination="rIL-fH-dZU" id="5wh-5K-Wsf"/>
                         <outlet property="lblTip" destination="JNe-Cq-nck" id="JuG-Ua-Cv2"/>
                         <outlet property="lblTotal" destination="WVF-da-HJ7" id="giS-Ds-9CG"/>
                         <outlet property="navigationBar" destination="UzL-eg-Ny6" id="wLz-Td-xWr"/>
                         <outlet property="segTypeTip" destination="WLE-1p-dSN" id="jGe-st-6fc"/>
                         <outlet property="textfieldBill" destination="AFk-cv-xoZ" id="ECr-ev-fK0"/>
+                        <outlet property="tipSlider" destination="Yc7-Kz-gUb" id="X9L-fe-2IS"/>
                         <outlet property="viewOther" destination="tZA-LV-AJk" id="ayL-L3-Isy"/>
                     </connections>
                 </viewController>

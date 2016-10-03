@@ -24,6 +24,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lbl5p: UILabel!
     @IBOutlet weak var lbl4p: UILabel!
     @IBOutlet weak var lbl3p: UILabel!
+    @IBOutlet weak var tipSlider: UISlider!
+    @IBOutlet weak var lblPercent: UILabel!
     var map_percent = [0.15, 0.25, 0.3]
     var pos_text_y = 0.0
     
@@ -33,12 +35,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         UIView.animateWithDuration(0.25, delay:0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             
             
+            
          
             self.viewOther.alpha = 0.0
             }, completion: { finished in
                 
         })
       
+    }
+    @IBAction func tipSliderEndEdit(sender: AnyObject) {
+        updateChange()
+    }
+    @IBAction func tipSliderEditChange(sender: AnyObject) {
+        updateChange()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setFloat(tipSlider.value, forKey: "last_tip")
     }
     @IBAction func onChangeDidBegan(sender: AnyObject) {
         UIView.animateWithDuration(0.25, delay:0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
@@ -48,6 +59,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         })
         
         updateChange()
+
         
     }
     
@@ -64,6 +76,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         currency = defaults.integerForKey("default_currency")
         pos_text_y = Double(textfieldBill.frame.origin.y)
+        
+        tipSlider.value = defaults.floatForKey("last_tip")
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -90,26 +104,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if (textField.text?.isEmpty == true && string == "0") {
+            return false
+        }
         let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
         return string.rangeOfCharacterFromSet(invalidCharacters, options: [], range: string.startIndex ..< string.endIndex) == nil
     }
     
     func updateChange() {
         let billMoney = NSString(string: lblAmount.text!).doubleValue
-        let type_tip = segTypeTip.selectedSegmentIndex
-        let tipMoney = billMoney*map_percent[type_tip]
-        lblTip.text = String(format: "%@", Float(tipMoney).asLocaleCurrency(getCurrency(currency)) )
+//        let type_tip = segTypeTip.selectedSegmentIndex
+        let type_tip = Float(tipSlider.value / 100)
+//        let tipMoney = billMoney*map_percent[type_tip]
+        let tipMoney : Double = billMoney * Double(tipSlider.value  / 100)
+        lblTip.text = String(format: "%@", Float(Int(tipMoney)).asLocaleCurrency(getCurrency(currency)) )
         
         let totalMoney = billMoney + tipMoney
         
+        lblPercent.text = String(format:"%d %% ", Int(tipSlider.value))
         
+        lblTotal.text = String(format: "%@", Float(Int(totalMoney)).asLocaleCurrency(getCurrency(currency)) )
         
-        lblTotal.text = String(format: "%@", Float(totalMoney).asLocaleCurrency(getCurrency(currency)) )
-        
-        lbl2p.text = String(format:"%@", Float(totalMoney/2).asLocaleCurrency(getCurrency(currency)))
-        lbl3p.text = String(format:"%@", Float(totalMoney/3).asLocaleCurrency(getCurrency(currency)))
-        lbl4p.text = String(format:"%@", Float(totalMoney/4).asLocaleCurrency(getCurrency(currency)))
-        lbl5p.text = String(format:"%@", Float(totalMoney/5).asLocaleCurrency(getCurrency(currency)))
+        lbl2p.text = String(format:"%@", Float(Int(totalMoney/2)).asLocaleCurrency(getCurrency(currency)))
+        lbl3p.text = String(format:"%@", Float(Int(totalMoney/3)).asLocaleCurrency(getCurrency(currency)))
+        lbl4p.text = String(format:"%@", Float(Int(totalMoney/4)).asLocaleCurrency(getCurrency(currency)))
+        lbl5p.text = String(format:"%@", Float(Int(totalMoney/5)).asLocaleCurrency(getCurrency(currency)))
     }
 
     @IBAction func EditingChanged(sender: UITextField) {
