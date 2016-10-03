@@ -63,10 +63,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func saveState(){
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(lblAmount.text, forKey: "last_bill")
+    }
+    
+    func applicationWillResignActiveNotification() {
+        saveState()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:Selector("applicationWillResignActiveNotification"), name: UIApplicationWillResignActiveNotification, object: nil)
+        
+        
         lblAmount.delegate = self
         
         
@@ -77,7 +88,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         currency = defaults.integerForKey("default_currency")
         pos_text_y = Double(textfieldBill.frame.origin.y)
         
+        
         tipSlider.value = defaults.floatForKey("last_tip")
+        let last = defaults.stringForKey("last_bill")
+        if(last != nil){
+            NSLog(last!)
+
+            lblAmount.text = last
+            self.viewOther.alpha = 1.0
+            updateChange()
+        }
+        
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -85,7 +106,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let idx = defaults.integerForKey("default_tip")
         segTypeTip.selectedSegmentIndex = idx
         currency = defaults.integerForKey("default_currency")
-
+//        let date = NSDate()
+//        defaults.dataForKey(<#T##defaultName: String##String#>)
+        
     }
 
     override func didReceiveMemoryWarning() {
