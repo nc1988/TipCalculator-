@@ -17,4 +17,10 @@ extension Float{
         return formatter.stringFromNumber(self)!
     }
     
+    func asLocaleCurrency1(str_locale: String)->String{
+        var formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.locale = NSLocale.currentLocale()
+        return formatter.stringFromNumber(self)!
+    }
 }

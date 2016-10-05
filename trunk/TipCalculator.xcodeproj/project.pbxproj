@@ -39,7 +39,7 @@
 /* Begin PBXFileReference section */
 		048B91041D9D6B0000D4FE1A /* Float+Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Float+Currency.swift"; sourceTree = "<group>"; };
 		048B91081D9D7F5800D4FE1A /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
-		61055FC11D17C408007B40CC /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = TipCalculator/SettingViewController.swift; sourceTree = "<group>"; };
+		61055FC11D17C408007B40CC /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		6116CAD91D12C118005CF1BC /* TipCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6116CADC1D12C118005CF1BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6116CADE1D12C118005CF1BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +83,6 @@
 		6116CAD01D12C118005CF1BC = {
 			isa = PBXGroup;
 			children = (
-				61055FC11D17C408007B40CC /* SettingViewController.swift */,
 				6116CADB1D12C118005CF1BC /* TipCalculator */,
 				6116CAF01D12C118005CF1BC /* TipCalculatorTests */,
 				6116CAFB1D12C119005CF1BC /* TipCalculatorUITests */,
@@ -104,6 +103,7 @@
 		6116CADB1D12C118005CF1BC /* TipCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				61055FC11D17C408007B40CC /* SettingViewController.swift */,
 				048B91081D9D7F5800D4FE1A /* person.png */,
 				6116CADC1D12C118005CF1BC /* AppDelegate.swift */,
 				6116CADE1D12C118005CF1BC /* ViewController.swift */,

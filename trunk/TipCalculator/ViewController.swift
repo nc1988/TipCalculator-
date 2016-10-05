@@ -26,6 +26,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lbl3p: UILabel!
     @IBOutlet weak var tipSlider: UISlider!
     @IBOutlet weak var lblPercent: UILabel!
+    
+    var min = 15
+    var medium = 25
+    var max = 35
     var map_percent = [0.15, 0.25, 0.3]
     var pos_text_y = 0.0
     
@@ -37,7 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             
          
-            self.viewOther.alpha = 0.0
+//            self.viewOther.alpha = 0.0
             }, completion: { finished in
                 
         })
@@ -76,12 +80,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         NSNotificationCenter.defaultCenter().addObserver(self, selector:Selector("applicationWillResignActiveNotification"), name: UIApplicationWillResignActiveNotification, object: nil)
+        let defaults = NSUserDefaults.standardUserDefaults()
         
+        var value = defaults.integerForKey("default_min")
+        if(value == 0) {
+            defaults.setInteger(15, forKey: "default_min")
+        }
         
+        value = defaults.integerForKey("default_medium")
+        if(value == 0) {
+            defaults.setInteger(25, forKey: "default_medium")
+        }
+        
+        value = defaults.integerForKey("default_max")
+        if(value == 0) {
+            defaults.setInteger(35, forKey: "default_max")
+        }
+
         lblAmount.delegate = self
         
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        
         let idx = defaults.integerForKey("default_tip")
         segTypeTip.selectedSegmentIndex = idx
         
@@ -103,9 +122,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewWillAppear(animated: Bool) {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let idx = defaults.integerForKey("default_tip")
-        segTypeTip.selectedSegmentIndex = idx
+        
+        segTypeTip.selectedSegmentIndex = 0
         currency = defaults.integerForKey("default_currency")
+        min = defaults.integerForKey("default_min")
+        medium = defaults.integerForKey("default_medium")
+        max = defaults.integerForKey("default_max")
+        segTypeTip.setTitle(min.description, forSegmentAtIndex: 0)
+        segTypeTip.setTitle(medium.description, forSegmentAtIndex: 1)
+        segTypeTip.setTitle(max.description, forSegmentAtIndex: 2)
 //        let date = NSDate()
 //        defaults.dataForKey(<#T##defaultName: String##String#>)
         
@@ -136,10 +161,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func updateChange() {
         let billMoney = NSString(string: lblAmount.text!).doubleValue
-//        let type_tip = segTypeTip.selectedSegmentIndex
-        let type_tip = Float(tipSlider.value / 100)
+        var type_tip = Float(0.0)
+        if(segTypeTip.selectedSegmentIndex == 0)
+        {
+            type_tip = Float(min) / 100
+        }
+        else if(segTypeTip.selectedSegmentIndex == 1)
+        {
+            type_tip = Float(medium) / 100
+        }
+        else{
+            type_tip = Float(max) / 100
+        }
+//        let type_tip = Float(tipSlider.value / 100)
 //        let tipMoney = billMoney*map_percent[type_tip]
-        let tipMoney : Double = billMoney * Double(tipSlider.value  / 100)
+        let tipMoney : Double = billMoney * Double(type_tip)
         lblTip.text = String(format: "%@", Float(Int(tipMoney)).asLocaleCurrency(getCurrency(currency)) )
         
         let totalMoney = billMoney + tipMoney
