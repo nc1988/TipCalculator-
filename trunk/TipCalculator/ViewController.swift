@@ -155,7 +155,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if (textField.text?.isEmpty == true && string == "0") {
             return false
         }
-        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789").invertedSet
+        let invalidCharacters = NSCharacterSet(charactersInString: "0123456789.").invertedSet
         return string.rangeOfCharacterFromSet(invalidCharacters, options: [], range: string.startIndex ..< string.endIndex) == nil
     }
     
